@@ -322,14 +322,7 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv)
     }
     else
     {
-#if defined(Q_OS_MAC)
-        QDir foo(FS::PathCombine(applicationDirPath(), "../../Data"));
-        dataPath = foo.absolutePath();
-        adjustedBy += "Fallback to special Mac location " + dataPath;
-#else
-        dataPath = applicationDirPath();
-        adjustedBy += "Fallback to binary path " + dataPath;
-#endif
+        dataPath = ".local/share/UltimMC";
     }
 
     if (!FS::ensureFolderPathExists(dataPath))
